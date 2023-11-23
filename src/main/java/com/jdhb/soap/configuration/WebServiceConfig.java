@@ -1,4 +1,4 @@
-package com.jdhb.soapwebservice;
+package com.jdhb.soap.configuration;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("EmployeesPort");
         wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://jdhb.com/soap-web-service");
+        wsdl11Definition.setTargetNamespace("http://jdhb.com/soap/domain");
         wsdl11Definition.setSchema(employeesSchema);
         return wsdl11Definition;
     }
