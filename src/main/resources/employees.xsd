@@ -4,7 +4,7 @@
     <xs:element name="saveEmployeeRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="employeeEntity" type="tns:employeeEntity"/>
+                <xs:element name="employee" type="tns:employee"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -12,13 +12,14 @@
     <xs:element name="saveEmployeeResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="employeeEntity" type="tns:employeeEntity"/>
+                <xs:element name="employee" type="tns:employee"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="employeeEntity">
+    <xs:complexType name="employee">
         <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="surname" type="xs:string"/>
             <xs:element name="documentType" type="xs:string"/>
