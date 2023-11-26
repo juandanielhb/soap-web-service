@@ -37,7 +37,7 @@ class EmployeeEndpointTest {
 
         when(employeeService.save(any(Employee.class))).thenReturn(employee);
 
-        SaveEmployeeResponse actualResponse = employeeEndpoint.getEmployee(request);
+        SaveEmployeeResponse actualResponse = employeeEndpoint.saveEmployee(request);
 
         assertEquals(expectedResponse.getEmployee(), actualResponse.getEmployee());
     }

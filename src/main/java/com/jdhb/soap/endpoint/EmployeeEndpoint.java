@@ -5,11 +5,13 @@ import com.jdhb.soap.domain.SaveEmployeeRequest;
 import com.jdhb.soap.domain.SaveEmployeeResponse;
 import com.jdhb.soap.mapper.EmployeeMapper;
 import com.jdhb.soap.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+@Slf4j
 @Endpoint
 public class EmployeeEndpoint {
     private static final String NAMESPACE_URI = "http://jdhb.com/soap/domain";
@@ -21,10 +23,12 @@ public class EmployeeEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "saveEmployeeRequest")
     @ResponsePayload
-    public SaveEmployeeResponse getEmployee(@RequestPayload SaveEmployeeRequest request) {
+    public SaveEmployeeResponse saveEmployee(@RequestPayload SaveEmployeeRequest request) {
+        Employee employee = request.getEmployee();
+        log.info("Save employee identified by {} {}", employee.getDocumentType(), employee.getDocumentNumber());
         SaveEmployeeResponse response = new SaveEmployeeResponse();
-        Employee employee = employeeService.save(request.getEmployee());
-        response.setEmployee(employee);
+        Employee employeeSaved = employeeService.save(employee);
+        response.setEmployee(employeeSaved);
         return response;
     }
 
